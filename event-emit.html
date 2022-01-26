@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<div id="app">
-		<app-header v-on:pass="callConsole"></app-header>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-	<script>
-	Vue.config.devtools = true;
-	var appHeader = {
-		template: "<button v-on:click='passEvent'>click me</button>",
-		methods: {
-			passEvent: function() {
-				this.$emit("pass");
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<app-header v-on:pass="callConsole"></app-header>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+		<script>
+		Vue.config.devtools = true;
+		var appHeader = {
+			template: "<button v-on:click='passEvent'>click me</button>",
+			methods: {
+				passEvent: function() {
+					this.$emit("pass");
+				},
+			}
+		};
+		new Vue({
+			el: "#app",
+			components: {
+				"app-header": appHeader,
 			},
-		}
-	};
-	new Vue({
-		el: "#app",
-		components: {
-			"app-header": appHeader,
-		},
-		methods: {
-			callConsole: function() {
-				console.log("test");
-			},
-		}
-	});
-	</script>
-</body>
+			methods: {
+				callConsole: function() {
+					console.log("test");
+				},
+			}
+		});
+		</script>
+	</body>
 </html>
