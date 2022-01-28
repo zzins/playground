@@ -8,7 +8,9 @@
 	</head>
 	<body>
 		<div id="app">
-			<app-header v-on:pass="callConsole"></app-header>
+      <p>{{ number }}</p>
+			<app-header v-on:pas11s="callConsole"></app-header>
+      <app-content v-on:add="addNum"></app-content>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 		<script>
@@ -17,21 +19,37 @@
 			template: "<button v-on:click='passEvent'>click me</button>",
 			methods: {
 				passEvent: function() {
-					this.$emit("pass");
+					this.$emit("pas11s");
 				},
 			}
 		};
+
+    var appContent = {
+      template: "<button v-on:click='addNumber'>add</button>",
+      methods: {
+        addNumber() {
+          this.$emit("add");
+        }
+      }
+    };
 
 		new Vue({
 			el: "#app",
 			components: {
 				"app-header": appHeader,
+        "app-content": appContent,
 			},
 			methods: {
 				callConsole: function() {
 					console.log("test");
 				},
-			}
+        addNum() {
+          this.number += 1;
+        }
+			},
+      data: {
+        number: 10,
+      }
 		});
 		</script>
 	</body>
